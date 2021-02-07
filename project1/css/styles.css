@@ -36,8 +36,20 @@ body {
   width: 300px;
   border: 1px solid black;
 }
+.green-on {
+  background-color: lightgreen;
+  height: 300px;
+  width: 300px;
+  border: 1px solid black;
+}
 .red {
   background-color: red;
+  height: 300px;
+  width: 300px;
+  border: 1px solid black;
+}
+.red-on {
+  background-color: lightsalmon;
   height: 300px;
   width: 300px;
   border: 1px solid black;
@@ -49,9 +61,20 @@ body {
   width: 300px;
   border: 1px solid black;
 }
-
+.yellow-on {
+  background-color: lightyellow;
+  height: 300px;
+  width: 300px;
+  border: 1px solid black;
+}
 .blue {
   background-color: blue;
+  height: 300px;
+  width: 300px;
+  border: 1px solid black;
+}
+.blue-on {
+  background-color: lightblue;
   height: 300px;
   width: 300px;
   border: 1px solid black;
