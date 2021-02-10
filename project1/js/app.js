@@ -13,7 +13,8 @@
  */
 
 class Simon {
-    constructor(colors, sequence, playerSequence, start, level, startBtn) {
+    constructor(btns, colors, sequence, playerSequence, start, level, startBtn) {
+        this.btns = $('.btn')
         this.colors = ['green', 'red', 'yellow', 'red'];
         this.sequence = [];
         this.playerSequence = [];
@@ -23,15 +24,40 @@ class Simon {
     }
 
     initiate() {
+        // this function will change the boolean from 'start' to true when start is pressed and will display the round number
         if (this.start === false) {
             this.startBtn.one('click', (event) => {
                 if (event.currentTarget) {
                     this.startBtn.text('round ' + this.level)
                 }
+                this.randomColor()
                 this.start = true;
             })
         }
     }
+    randomColor() {
+        this.playerSequence = [];
+        this.level++;
+        let random = this.colors[Math.floor(Math.random() * 4)];
+        this.sequence.push(random);
+        $('#' + random).fadeIn(100).fadeOut(50).fadeIn(100).fadeOut(50).fadeIn(100);
+        console.log(random + " sounds")
+        this.playerClicks()
+    }
+
+    playerClicks() {
+        this.btns.on('click', (event) => {
+            let playerClickChoice = (event.currentTarget.id)
+            this.playerSequence.push(playerClickChoice)
+            console.log(this.playerSequence)
+        })
+    }
+
+
+
+
+
+
 }
 
 
