@@ -13,16 +13,28 @@
  */
 
 class Simon {
-    constructor(colors, sequence, playerSequence, start, level) {
+    constructor(colors, sequence, playerSequence, start, level, startBtn) {
         this.colors = ['green', 'red', 'yellow', 'red'];
         this.sequence = [];
         this.playerSequence = [];
         this.start = false;
         this.level = 0;
+        this.startBtn = $('.start')
     }
 
-
+    initiate() {
+        if (this.start === false) {
+            this.startBtn.one('click', (event) => {
+                if (event.currentTarget) {
+                    this.startBtn.text('round ' + this.level)
+                }
+                this.start = true;
+            })
+        }
+    }
 }
 
+
 const game = new Simon();
+game.initiate()
 
