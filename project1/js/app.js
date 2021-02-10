@@ -1,5 +1,5 @@
 /**
- [] declare my global variables
+ [x] declare my global variables
  [] create a function "on" to announce the game starts by lighting the green btn after you click the on btn
  [] - if the green-btn isn't click within 10 seconds turn off the game automatically
     - if the green-btn is pressed start the game and fire randomColor function
@@ -13,8 +13,12 @@
  */
 
 class Simon {
-    constructor() {
-
+    constructor(colors, sequence, playerSequence, start, level) {
+        this.colors = ['green', 'red', 'yellow', 'red'];
+        this.sequence = [];
+        this.playerSequence = [];
+        this.start = false;
+        this.level = 0;
     }
 
 
