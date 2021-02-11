@@ -1,6 +1,8 @@
 .container {
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 body {
   background-color: wheat;
@@ -38,7 +40,7 @@ li {
 .btn {
   height: 300px;
   width: 300px;
-  border: 5px solid black;
+  border: 30px solid black;
   cursor: pointer;
 }
 
@@ -70,8 +72,8 @@ li {
   background: radial-gradient(
     circle,
     rgba(255, 255, 255, 1) 0%,
-    rgba(165, 200, 180, 1) 7%,
-    rgba(161, 255, 0, 1) 100%
+    rgba(162, 235, 117, 1) 66%,
+    rgba(84, 208, 47, 1) 100%
   );
 }
 .red-flash {
@@ -114,7 +116,7 @@ li {
   border-radius: 50%;
   position: absolute;
   display: flex;
-  justify-content: left;
+  justify-content: center;
   flex-direction: row;
   align-items: center;
 }
@@ -144,4 +146,13 @@ h4 {
 
 .show {
   background-color: lightyellow;
+}
+.result {
+  display: flex;
+  justify-content: center;
+}
+.over {
+  font-size: 70px;
+  align-items: center;
+  margin-top: 50%;
 }
