@@ -1,158 +1,283 @@
-.container {
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-}
-body {
-  background-color: wheat;
-}
-.nav {
-  width: 100%;
-  background-color: teal;
+@media screen and (min-width: 600px) {
+  .container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+  body {
+    background-color: wheat;
+  }
+
+
+  .game {
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .btn {
+    height: 250px;
+    width: 250px;
+    border: 25px solid black;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    box-shadow: inset 5px 5px 5px 5px rgb(118, 115, 115);
+  }
+
+  .green {
+    background-color: green;
+    border-top-left-radius: 100%;
+  }
+
+  .red {
+    background-color: rgb(225, 46, 46);
+    border-top-right-radius: 100%;
+  }
+
+  .yellow {
+    background-color: rgb(233, 155, 8);
+    border-bottom-left-radius: 100%;
+  }
+
+  .blue {
+    background-color: rgb(41, 41, 181);
+    border-bottom-right-radius: 100%;
+  }
+  .green-flash {
+    background: rgb(255, 255, 255);
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(162, 235, 117, 1) 66%,
+      rgba(84, 208, 47, 1) 100%
+    );
+  }
+  .red-flash {
+    background: rgb(255, 255, 255);
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(236, 195, 195, 1) 26%,
+      rgba(255, 19, 0, 1) 100%
+    );
+  }
+  .yellow-flash {
+    background: rgb(255, 255, 255);
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(232, 235, 117, 1) 66%,
+      rgba(240, 239, 87, 1) 100%
+    );
+  }
+  .blue-flash {
+    background: rgb(255, 255, 255);
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(117, 172, 235, 1) 66%,
+      rgba(88, 87, 240, 1) 100%
+    );
+  }
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .middle {
+    height: 250px;
+    width: 250px;
+    border: 15px solid black;
+    background-color: grey;
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+  }
+  .screen {
+    height: 50px;
+    width: 70px;
+    border: 3px solid darkred;
+    /* position: absolute; */
+    margin-left: 15px;
+    background-color: rgb(69, 5, 5);
+    display: flex;
+    align-items: center;
+  }
+  h4 {
+    font-size: 20px;
+    color: rgb(211, 49, 49);
+    margin: auto;
+  }
+  .start {
+    margin-left: 20px;
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    border: 5px solid black;
+    background-color: red;
+  }
+  .show {
+    background-color: lightyellow;
+  }
 }
 
-ul {
-  display: flex;
-  justify-content: space-evenly;
-}
 
-li {
-  list-style: none;
-  font-size: 50px;
-  padding: 5px;
-  color: whitesmoke;
-}
 
-.game {
-  margin-top: 10%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
 
-.row {
-  display: flex;
-  flex-direction: row;
-}
 
-.btn {
-  height: 300px;
-  width: 300px;
-  border: 30px solid black;
-  cursor: pointer;
-}
 
-.btn:hover {
-  box-shadow: inset 5px 5px 5px 5px rgb(118, 115, 115);
-}
 
-.green {
-  background-color: green;
-  border-top-left-radius: 100%;
-}
 
-.red {
-  background-color: rgb(225, 46, 46);
-  border-top-right-radius: 100%;
-}
 
-.yellow {
-  background-color: rgb(233, 155, 8);
-  border-bottom-left-radius: 100%;
-}
+/* 
+Media Query for small screens */
 
-.blue {
-  background-color: rgb(41, 41, 181);
-  border-bottom-right-radius: 100%;
-}
-.green-flash {
-  background: rgb(255, 255, 255);
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(162, 235, 117, 1) 66%,
-    rgba(84, 208, 47, 1) 100%
-  );
-}
-.red-flash {
-  background: rgb(255, 255, 255);
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(236, 195, 195, 1) 26%,
-    rgba(255, 19, 0, 1) 100%
-  );
-}
-.yellow-flash {
-  background: rgb(255, 255, 255);
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(232, 235, 117, 1) 66%,
-    rgba(240, 239, 87, 1) 100%
-  );
-}
-.blue-flash {
-  background: rgb(255, 255, 255);
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(117, 172, 235, 1) 66%,
-    rgba(88, 87, 240, 1) 100%
-  );
-}
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.middle {
-  height: 250px;
-  width: 250px;
-  border: 15px solid black;
-  background-color: grey;
-  border-radius: 50%;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  align-items: center;
-}
-.screen {
-  height: 50px;
-  width: 70px;
-  border: 3px solid darkred;
-  /* position: absolute; */
-  margin-left: 15px;
-  background-color: rgb(69, 5, 5);
-  display: flex;
-  align-items: center;
-}
-h4 {
-  font-size: 20px;
-  color: rgb(211, 49, 49);
-  margin: auto;
-}
-.start {
-  margin-left: 20px;
-  height: 60px;
-  width: 60px;
-  border-radius: 100%;
-  border: 5px solid black;
-  background-color: red;
-}
+@media screen and (max-width: 600px) {
+  .container {
+    width: 70%%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+  body {
+    background-color: wheat;
+  }
 
-.show {
-  background-color: lightyellow;
+  .game {
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .btn {
+    height: 200px;
+    width: 200px;
+    border: 10px solid black;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    box-shadow: inset 5px 5px 5px 5px rgb(118, 115, 115);
+  }
+
+  .green {
+    background-color: green;
+    border-top-left-radius: 100%;
+  }
+
+  .red {
+    background-color: rgb(225, 46, 46);
+    border-top-right-radius: 100%;
+  }
+
+  .yellow {
+    background-color: rgb(233, 155, 8);
+    border-bottom-left-radius: 100%;
+  }
+
+  .blue {
+    background-color: rgb(41, 41, 181);
+    border-bottom-right-radius: 100%;
+  }
+  .green-flash {
+    background: rgb(255, 255, 255);
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(162, 235, 117, 1) 66%,
+      rgba(84, 208, 47, 1) 100%
+    );
+  }
+  .red-flash {
+    background: rgb(255, 255, 255);
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(236, 195, 195, 1) 26%,
+      rgba(255, 19, 0, 1) 100%
+    );
+  }
+  .yellow-flash {
+    background: rgb(255, 255, 255);
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(232, 235, 117, 1) 66%,
+      rgba(240, 239, 87, 1) 100%
+    );
+  }
+  .blue-flash {
+    background: rgb(255, 255, 255);
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(117, 172, 235, 1) 66%,
+      rgba(88, 87, 240, 1) 100%
+    );
+  }
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .middle {
+    height: 200px;
+    width: 200px;
+    border: 10px solid black;
+    background-color: grey;
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+  }
+  .screen {
+    height: 50px;
+    width: 70px;
+    border: 3px solid darkred;
+    /* position: absolute; */
+    margin-left: 15px;
+    background-color: rgb(69, 5, 5);
+    display: flex;
+    align-items: center;
+  }
+  h4 {
+    font-size: 20px;
+    color: rgb(211, 49, 49);
+    margin: auto;
+  }
+  .start {
+    margin-left: 20px;
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    border: 5px solid black;
+    background-color: red;
+  }
+  .show {
+    background-color: lightyellow;
+  }
 }
-.result {
-  display: flex;
-  justify-content: center;
-}
-.over {
-  font-size: 70px;
-  align-items: center;
-  margin-top: 50%;
+  
 }
