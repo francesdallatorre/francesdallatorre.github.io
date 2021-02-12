@@ -1,7 +1,7 @@
 
 let = new Audio('/Users/francesdallatorre/Desktop/github_pages/project1/sounds/37749__quilt__blues-for-the-masses-03.ogg')
 class Simon {
-    constructor(colors, computer, player, start, level, speedAudio, greenAudio, redAudio, yellowAudio, blueAudio) {
+    constructor(colors, computer, player, start, level, speed, greenAudio, redAudio, yellowAudio, blueAudio) {
         this.colors = ['green', 'red', 'yellow', 'blue'];
         this.computer = [];
         this.player = [];
@@ -13,7 +13,7 @@ class Simon {
         // this.yellowAudio = new Audio();
         // this.blueAudio = new Audio()
 
-        // this function will take the user's input and save it into playerSequence variable, then call the function checkClick to compare players input with computer's input
+        // this block of code is actively listening for click events, and will take the user's input and save it into playerSequence variable, then call the function checkClick to compare players input with computer's input.
         $('.btn').on('click', (event) => {
             console.log(event.currentTarget.id)
             const playerClick = event.currentTarget.id
@@ -27,46 +27,59 @@ class Simon {
             this.checkClick(this.player.length - 1)
         })
 
-
     }
-    // this function initiates the game by prompting a random color
+
+    // this function initiates the game by clicking the on button
     init() {
         $('.start').on('click', (event) => {
             if (this.initiate === false) {
                 $('.start').css('background-color', 'rgb(255, 102, 102)');
                 this.initiate = true;
                 this.nextSequence();
+                // and if clicked again it resets the game
             } else {
-                $('.start').text('Off')
-                $('.start').css('color', 'white')
                 this.reStart()
             }
         })
     }
 
+
     // this function generates a random color prompt, everytime it  is invoked it will increase the level by one, and it also stores the value of the random color prompt in a variable gameSequence
     nextSequence() {
-        // reset the player sequence array so that player has to re input all the previous colors 
+        // increase level by one
         this.level++
-        if (this.level === 4) {
+        this.speed = 1000;
+
+        if (this.level > 3) {
+            this.speed = 500
+        } else if (this.level > 7) {
+            this.speed = 200
+        }
+        // announce winner when a level is reached and reStart
+        if (this.level === 10) {
             this.announceWinner()
             this.reStart()
         }
+        // empty player's array for each round
         this.player = []
-        this.speed = 1000;
+        // display level on the game board screen
         $('.count').text(this.level)
+        // generate a random color and store it in computer array
         const randomColor = this.colors[Math.floor(Math.random() * 4)]
         this.computer.push(randomColor)
+        // set timeout to create an ilusion of speed
         setTimeout(() => {
             $('#' + randomColor).addClass(randomColor + "-flash")
             // play sounds
             setTimeout(() => {
                 $('#' + randomColor).removeClass(randomColor + "-flash")
-            }, 1000);
-        }, 1000);
+            }, this.speed);
+        }, this.speed);
+
     }
     // this function's control flow verify the equality of playerSequence with gameSequence, if it is equal we fire nextSequence for another round
     checkClick(round) {
+        // comparte players array with computer's array
         if (this.player[round] === this.computer[round]) {
             if (this.player.length === this.computer.length) {
                 this.nextSequence()
@@ -80,18 +93,19 @@ class Simon {
     }
     announceWinner() {
         $('.announce').text('YOU WON!');
+        $('.score').text(`score: ${this.computer.length - 1}`)
     }
     // this function will resets game values
     reStart() {
         this.level = 0;
         this.computer = [];
         this.initiate = false;
-        // $('.count').text('0');
-        // $('.start').css('background-color', 'red');
-        // $('.start').text('On');
+        $('.count').text('0');
+        $('.start').css('background-color', 'red');
     }
     gameOver() {
         $('.announce').text('GAME OVER').css('color', 'red');
+        $('.score').text(`score: ${this.computer.length - 1}`)
         setTimeout(() => {
             location.reload();
         }, 3000);
