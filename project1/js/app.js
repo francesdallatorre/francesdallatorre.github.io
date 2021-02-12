@@ -1,29 +1,31 @@
 
 let = new Audio('/Users/francesdallatorre/Desktop/github_pages/project1/sounds/37749__quilt__blues-for-the-masses-03.ogg')
 class Simon {
-    constructor(colors, computer, player, start, level, speed, greenAudio, redAudio, yellowAudio, blueAudio) {
+    constructor(colors, computer, player, playerClick, start, level, speed, greenAudio, redAudio, yellowAudio, blueAudio) {
         this.colors = ['green', 'red', 'yellow', 'blue'];
         this.computer = [];
         this.player = [];
+        this.playerClick;
         this.initiate = false;
         this.level = 0;
         this.speed;
-        // this.greenAudio = new Audio();
-        // this.redAudio = new Audio();
-        // this.yellowAudio = new Audio();
-        // this.blueAudio = new Audio()
+        this.greenAudio = new Audio('https://dl.dropboxusercontent.com/s/0gv5xq9bggrc1fc/a_note1.wav');
+        this.redAudio = new Audio('https://dl.dropboxusercontent.com/s/vf22bxhw2lmintz/b_note1.wav');
+        this.yellowAudio = new Audio('https://dl.dropboxusercontent.com/s/0ml89c51jtlpfva/f_note1.wav');
+        this.blueAudio = new Audio('https://dl.dropboxusercontent.com/s/fm5d186yliwwm5w/g_note1.wav')
 
         // this block of code is actively listening for click events, and will take the user's input and save it into playerSequence variable, then call the function checkClick to compare players input with computer's input.
         $('.btn').on('click', (event) => {
             console.log(event.currentTarget.id)
-            const playerClick = event.currentTarget.id
+            this.playerClick = event.currentTarget.id
             setTimeout(() => {
-                $('.' + playerClick).addClass(playerClick + '-flash')
+                $('.' + this.playerClick).addClass(this.playerClick + '-flash')
+                this.playSounds()
                 setTimeout(() => {
-                    $('.' + playerClick).removeClass(playerClick + '-flash')
+                    $('.' + this.playerClick).removeClass(this.playerClick + '-flash')
                 }, 200);
             }, 50);
-            this.player.push(playerClick);
+            this.player.push(this.playerClick);
             this.checkClick(this.player.length - 1)
         })
 
@@ -42,7 +44,17 @@ class Simon {
             }
         })
     }
-
+    playSounds() {
+        if (this.playerClick === 'green') {
+            this.greenAudio.play()
+        } else if (this.playerClick === 'red') {
+            this.redAudio.play()
+        } else if (this.playerClick === 'yellow') {
+            this.yellowAudio.play()
+        } else if (this.playerClick === 'blue') {
+            this.blueAudio.play()
+        }
+    }
 
     // this function generates a random color prompt, everytime it  is invoked it will increase the level by one, and it also stores the value of the random color prompt in a variable gameSequence
     nextSequence() {
