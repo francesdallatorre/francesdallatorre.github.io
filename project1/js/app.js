@@ -26,28 +26,33 @@ class Simon {
             this.player.push(playerClick);
             this.checkClick(this.player.length - 1)
         })
+
+
     }
     // this function initiates the game by prompting a random color
     init() {
-        $('.start').one('click', (event) => {
-            $('.start').css('background-color', 'rgb(255, 102, 102)')
-            this.nextSequence()
-            this.initiate = true;
-            if (this.initiate === true) {
+        $('.start').on('click', (event) => {
+            if (this.initiate === false) {
+                $('.start').css('background-color', 'rgb(255, 102, 102)');
+                this.initiate = true;
+                this.nextSequence();
+            } else {
                 $('.start').text('Off')
                 $('.start').css('color', 'white')
-                $('.start').one('click', () => {
-                    this.reStart()
-                })
+                this.reStart()
             }
         })
     }
+
     // this function generates a random color prompt, everytime it  is invoked it will increase the level by one, and it also stores the value of the random color prompt in a variable gameSequence
     nextSequence() {
-        // reset the player sequence array so that player has to re input all the previous colors plus a random color
-        $('.btn').attr('disabled', 'disabled')
-        this.player = []
+        // reset the player sequence array so that player has to re input all the previous colors 
         this.level++
+        if (this.level === 4) {
+            this.announceWinner()
+            this.reStart()
+        }
+        this.player = []
         this.speed = 1000;
         $('.count').text(this.level)
         const randomColor = this.colors[Math.floor(Math.random() * 4)]
@@ -62,13 +67,9 @@ class Simon {
     }
     // this function's control flow verify the equality of playerSequence with gameSequence, if it is equal we fire nextSequence for another round
     checkClick(round) {
-        $('.btn').removeAttr('disabled')
-        console.log(round)
         if (this.player[round] === this.computer[round]) {
             if (this.player.length === this.computer.length) {
                 this.nextSequence()
-            } else if (this.level === 7) {
-                $('.game').css('display', 'none')
             }
         } else {
             this.gameOver()
@@ -77,21 +78,24 @@ class Simon {
             }, 1000);
         }
     }
-    // this function will resets game values
-    reStart() {
-        this.level = 0;
-        this.computer = []
-        this.initiate = false;
-        $('.count').text('0');
-        $('.start').css('background-color', 'red');
-        $('.start').text('On')
+    announceWinner() {
+        $('.announce').text('YOU WON!')
 
 
     }
+    // this function will resets game values
+    reStart() {
+        this.level = 0;
+        this.computer = [];
+        this.initiate = false;
+        // $('.count').text('0');
+        // $('.start').css('background-color', 'red');
+        // $('.start').text('On');
+    }
     gameOver() {
-        $('.announce').text('GAME OVER').css('color', 'red')
+        $('.announce').text('GAME OVER').css('color', 'red');
         setTimeout(() => {
-            location.reload()
+            location.reload();
         }, 3000);
     }
 }
