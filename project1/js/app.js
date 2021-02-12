@@ -33,6 +33,13 @@ class Simon {
             $('.start').css('background-color', 'rgb(255, 102, 102)')
             this.nextSequence()
             this.initiate = true;
+            if (this.initiate === true) {
+                $('.start').text('Off')
+                $('.start').css('color', 'white')
+                $('.start').one('click', () => {
+                    this.reStart()
+                })
+            }
         })
     }
     // this function generates a random color prompt, everytime it  is invoked it will increase the level by one, and it also stores the value of the random color prompt in a variable gameSequence
@@ -76,12 +83,16 @@ class Simon {
         this.computer = []
         this.initiate = false;
         $('.count').text('0');
-        setTimeout(() => {
-            location.reload()
-        }, 3000);
+        $('.start').css('background-color', 'red');
+        $('.start').text('On')
+
+
     }
     gameOver() {
         $('.announce').text('GAME OVER').css('color', 'red')
+        setTimeout(() => {
+            location.reload()
+        }, 3000);
     }
 }
 const game = new Simon();
