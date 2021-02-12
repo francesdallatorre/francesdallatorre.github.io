@@ -1,7 +1,7 @@
 
 let = new Audio('/Users/francesdallatorre/Desktop/github_pages/project1/sounds/37749__quilt__blues-for-the-masses-03.ogg')
 class Simon {
-    constructor(colors, computer, player, playerClick, start, level, speed, greenAudio, redAudio, yellowAudio, blueAudio, wrongAudio) {
+    constructor(colors, computer, player, playerClick, start, level, speed, greenAudio, redAudio, yellowAudio, blueAudio, wrongAudio, winnerAudio) {
         this.colors = ['green', 'red', 'yellow', 'blue'];
         this.computer = [];
         this.player = [];
@@ -14,6 +14,7 @@ class Simon {
         this.yellowAudio = new Audio('https://dl.dropboxusercontent.com/s/0ml89c51jtlpfva/f_note1.wav');
         this.blueAudio = new Audio('https://dl.dropboxusercontent.com/s/fm5d186yliwwm5w/g_note1.wav')
         this.wrongAudio = new Audio('https://dl.dropboxusercontent.com/s/r37z5gz4atss8aa/family_fortunes__wrong_answer.mp3')
+        this.winnerAudio = new Audio('https://freesound.org/people/Mativve/sounds/391539/download/391539__mativve__electro-win-sound.wav')
 
         // this block of code is actively listening for click events, and will take the user's input and save it into playerSequence variable, then call the function checkClick to compare players input with computer's input.
         $('.btn').on('click', (event) => {
@@ -106,6 +107,7 @@ class Simon {
     }
     announceWinner() {
         $('.announce').text('YOU WON!');
+        this.winnerAudio.play()
         $('.score').text(`score: ${this.computer.length - 1}`)
     }
     // this function will resets game values
