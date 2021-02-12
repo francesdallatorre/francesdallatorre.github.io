@@ -1,11 +1,18 @@
+
+let = new Audio('/Users/francesdallatorre/Desktop/github_pages/project1/sounds/37749__quilt__blues-for-the-masses-03.ogg')
 class Simon {
-    constructor(colors, computer, player, start, level, speed) {
+    constructor(colors, computer, player, start, level, speedAudio, greenAudio, redAudio, yellowAudio, blueAudio) {
         this.colors = ['green', 'red', 'yellow', 'blue'];
         this.computer = [];
         this.player = [];
         this.initiate = false;
         this.level = 0;
         this.speed;
+        // this.greenAudio = new Audio();
+        // this.redAudio = new Audio();
+        // this.yellowAudio = new Audio();
+        // this.blueAudio = new Audio()
+
         // this function will take the user's input and save it into playerSequence variable, then call the function checkClick to compare players input with computer's input
         $('.btn').on('click', (event) => {
             console.log(event.currentTarget.id)
@@ -57,9 +64,10 @@ class Simon {
                 $('.game').css('display', 'none')
             }
         } else {
+            this.gameOver()
             setTimeout(() => {
+                this.reStart()
             }, 1000);
-            this.reStart()
         }
     }
     // this function will resets game values
@@ -71,6 +79,9 @@ class Simon {
         setTimeout(() => {
             location.reload()
         }, 3000);
+    }
+    gameOver() {
+        $('.announce').text('GAME OVER').css('color', 'red')
     }
 }
 const game = new Simon();

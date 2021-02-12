@@ -1,13 +1,12 @@
 @media screen and (min-width: 600px) {
+  body {
+    background-image: url("https://www.myfreetextures.com/wp-content/uploads/2014/10/seamless-wood-background-1-900x900.jpg");
+  }
   .container {
     width: 100%;
     margin: 0 auto;
     display: flex;
     justify-content: center;
-  }
-
-  body {
-    background-color: wheat;
   }
 
   .game {
@@ -150,26 +149,35 @@
   }
 }
 
+h1 {
+  font-size: 70px;
+  color: whitesmoke;
+  font-weight: 100;
+}
+.announce h1 {
+  font-size: 100px;
+}
 /* 
 Media Query for small screens */
 
 @media screen and (max-width: 600px) {
   .container {
-    width: 70%%;
+    width: 20%;
     margin: 0 auto;
     display: flex;
     justify-content: center;
+    margin-top: 20%;
   }
   body {
-    background-color: wheat;
+    background-image: url("https://www.myfreetextures.com/wp-content/uploads/2014/10/seamless-wood-background-1-900x900.jpg");
   }
 
   .game {
-    margin-top: 10%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    padding: 40%;
   }
 
   .row {
@@ -291,5 +299,14 @@ Media Query for small screens */
       rgba(222, 202, 202, 1) 39%,
       rgba(228, 220, 134, 1) 100%
     );
+  }
+
+  h1 {
+    font-size: 50px;
+    color: whitesmoke;
+    font-weight: 100;
+  }
+  .announce {
+    font-size: 50px;
   }
 }
