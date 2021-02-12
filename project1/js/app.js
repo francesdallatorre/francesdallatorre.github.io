@@ -79,9 +79,7 @@ class Simon {
         }
     }
     announceWinner() {
-        $('.announce').text('YOU WON!')
-
-
+        $('.announce').text('YOU WON!');
     }
     // this function will resets game values
     reStart() {

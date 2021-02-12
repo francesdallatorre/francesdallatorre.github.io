@@ -29,8 +29,8 @@
     cursor: pointer;
   }
 
-  .btn:hover {
-    box-shadow: inset 5px 5px 5px 5px rgb(118, 115, 115);
+  .btn: focus {
+    outline: 0;
   }
 
   .green {
@@ -193,11 +193,7 @@ Media Query for small screens */
     width: 150px;
     border: 10px solid black;
     cursor: pointer;
-  }
-
-  .btn:hover {
-    box-shadow: inset 3px 3px 3px whitesmoke;
-  }
+  }}
 
   .green {
     background-color: green;
