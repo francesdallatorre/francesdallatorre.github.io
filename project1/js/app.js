@@ -10,6 +10,12 @@ class Simon {
         $('.btn').on('click', (event) => {
             console.log(event.currentTarget.id)
             const playerClick = event.currentTarget.id
+            setTimeout(() => {
+                $('.' + playerClick).addClass(playerClick + '-flash')
+                setTimeout(() => {
+                    $('.' + playerClick).removeClass(playerClick + '-flash')
+                }, 200);
+            }, 50);
             this.player.push(playerClick);
             this.checkClick(this.player.length - 1)
         })
