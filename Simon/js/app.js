@@ -1,5 +1,3 @@
-
-let = new Audio('/Users/francesdallatorre/Desktop/github_pages/project1/sounds/37749__quilt__blues-for-the-masses-03.ogg')
 class Simon {
     constructor(colors, computer, player, playerClick, start, level, speed, greenAudio, redAudio, yellowAudio, blueAudio, wrongAudio, winnerAudio) {
         this.colors = ['green', 'red', 'yellow', 'blue'];
@@ -8,41 +6,52 @@ class Simon {
         this.playerClick;
         this.initiate = false;
         this.level = 0;
-        this.speed;
+        this.speed = 2000;
         this.greenAudio = new Audio('https://dl.dropboxusercontent.com/s/0gv5xq9bggrc1fc/a_note1.wav');
         this.redAudio = new Audio('https://dl.dropboxusercontent.com/s/vf22bxhw2lmintz/b_note1.wav');
         this.yellowAudio = new Audio('https://dl.dropboxusercontent.com/s/0ml89c51jtlpfva/f_note1.wav');
         this.blueAudio = new Audio('https://dl.dropboxusercontent.com/s/fm5d186yliwwm5w/g_note1.wav')
         this.wrongAudio = new Audio('https://dl.dropboxusercontent.com/s/r37z5gz4atss8aa/family_fortunes__wrong_answer.mp3')
-        this.winnerAudio = new Audio('https://freesound.org/people/Mativve/sounds/391539/download/391539__mativve__electro-win-sound.wav')
+
 
         // this block of code is actively listening for click events, and will take the user's input and save it into playerSequence variable, then call the function checkClick to compare players input with computer's input.
         $('.btn').on('click', (event) => {
-            console.log(event.currentTarget.id)
-            this.playerClick = event.currentTarget.id
-            setTimeout(() => {
-                $('.' + this.playerClick).addClass(this.playerClick + '-flash')
-                this.playSounds()
+            if (this.initiate) {
+                this.playerClick = event.currentTarget.id
                 setTimeout(() => {
-                    $('.' + this.playerClick).removeClass(this.playerClick + '-flash')
-                }, 200);
-            }, 50);
-            this.player.push(this.playerClick);
-            this.checkClick(this.player.length - 1)
+                    $('.' + this.playerClick).addClass(this.playerClick + '-flash')
+                    this.playSounds()
+                    setTimeout(() => {
+                        $('.' + this.playerClick).removeClass(this.playerClick + '-flash')
+                    }, 200);
+                }, 50);
+                this.player.push(this.playerClick);
+                this.checkClick(this.player.length - 1)
+            } else {
+                alert('press on to play')
+            }
         })
 
-    }
 
+    }
     // this function initiates the game by clicking the on button
     init() {
+        let onOff = 0
         $('.start').on('click', (event) => {
-            if (this.initiate === false) {
+            onOff++
+            console.log(onOff)
+            if (onOff % 2 !== 0 && !this.initiate) {
                 $('.start').css('background-color', 'rgb(255, 102, 102)');
                 this.initiate = true;
-                this.nextSequence();
-                // and if clicked again it resets the game
-            } else {
-                this.reStart()
+                this.nextSequence()
+                setTimeout(() => {
+                    $('.announce').text('Go!')
+                    setTimeout(() => {
+                        $('.announce').text('')
+                    }, 500);
+                }, 500);
+            } else if (onOff % 2 === 0) {
+                this.reset()
             }
         })
     }
@@ -57,26 +66,19 @@ class Simon {
             this.blueAudio.play()
         }
     }
+    roundManager() {
+        this.player = []
+        if (this.level === 3) {
+            $('.count').text(this.level)
+            this.announceWinner()
+        } else {
+            this.nextSequence()
+        }
 
+    }
     // this function generates a random color prompt, everytime it  is invoked it will increase the level by one, and it also stores the value of the random color prompt in a variable gameSequence
     nextSequence() {
-        // increase level by one
-        this.level++
-        this.speed = 1000;
-
-        if (this.level > 3) {
-            this.speed = 500
-        } else if (this.level > 7) {
-            this.speed = 200
-        }
-        // announce winner when a level is reached and reStart
-        if (this.level === 10) {
-            this.announceWinner()
-            this.reStart()
-        }
-        // empty player's array for each round
-        this.player = []
-        // display level on the game board screen
+        this.level++;
         $('.count').text(this.level)
         // generate a random color and store it in computer array
         const randomColor = this.colors[Math.floor(Math.random() * 4)]
@@ -84,46 +86,54 @@ class Simon {
         // set timeout to create an ilusion of speed
         setTimeout(() => {
             $('#' + randomColor).addClass(randomColor + "-flash")
-            // play sounds
             setTimeout(() => {
                 $('#' + randomColor).removeClass(randomColor + "-flash")
-            }, this.speed);
+            }, 500);
         }, this.speed);
 
     }
+
     // this function's control flow verify the equality of playerSequence with gameSequence, if it is equal we fire nextSequence for another round
     checkClick(round) {
-        // comparte players array with computer's array
+        // compare players array with computer's array, if the match 
         if (this.player[round] === this.computer[round]) {
             if (this.player.length === this.computer.length) {
-                this.nextSequence()
+                this.roundManager()
             }
         } else {
             this.gameOver()
-            setTimeout(() => {
-                this.reStart()
-            }, 1000);
         }
     }
+    // this function will stop the game, announce the winner, and display score
     announceWinner() {
         $('.announce').text('YOU WON!');
-        this.winnerAudio.play()
-        $('.score').text(`score: ${this.computer.length - 1}`)
+        $('.score').text(`score: ${this.computer.length} `)
+        setTimeout(() => {
+            this.reset()
+        }, 1000);
     }
     // this function will resets game values
-    reStart() {
+    reset() {
         this.level = 0;
         this.computer = [];
+        this.player = []
         this.initiate = false;
         $('.count').text('0');
         $('.start').css('background-color', 'red');
+        $('.score').text('');
+        $('.announce').text('')
     }
+    // this function announces game over, score, and after 2 seconds resets game values
     gameOver() {
         $('.announce').text('GAME OVER').css('color', 'red');
         this.wrongAudio.play()
-        $('.score').text(`score: ${this.computer.length - 1}`)
+        if (this.computer.length > 0) {
+            $('.score').text(`score: ${this.computer.length - 1} `)
+        } else {
+            $('.score').text(`score: ${this.computer.length} `)
+        }
         setTimeout(() => {
-            location.reload();
+            this.reset()
         }, 3000);
     }
 }

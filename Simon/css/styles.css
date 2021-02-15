@@ -157,9 +157,7 @@ h1 {
   color: whitesmoke;
   font-weight: 100;
 }
-.announce h1 {
-  font-size: 100px;
-}
+
 /* 
 Media Query for small screens */
 
@@ -290,6 +288,9 @@ Media Query for small screens */
     border: 3px solid rgb(77, 1, 1);
     background-color: red;
   }
+  .start:focus {
+    outline-style: none;
+  }
   .show {
     background: rgb(254, 254, 254);
     background: radial-gradient(
@@ -301,11 +302,9 @@ Media Query for small screens */
   }
 
   h1 {
-    font-size: 50px;
+    font-size: 0px;
     color: whitesmoke;
     font-weight: 100;
   }
-  .announce {
-    font-size: 50px;
-  }
+
 }
