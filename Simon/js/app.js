@@ -68,7 +68,7 @@ class Simon {
     }
     roundManager() {
         this.player = []
-        if (this.level === 3) {
+        if (this.level === 7) {
             $('.count').text(this.level)
             this.announceWinner()
         } else {
@@ -79,7 +79,9 @@ class Simon {
     // this function generates a random color prompt, everytime it  is invoked it will increase the level by one, and it also stores the value of the random color prompt in a variable gameSequence
     nextSequence() {
         this.level++;
-        $('.count').text(this.level)
+        setTimeout(() => {
+            $('.count').text(this.level)
+        }, 1000);
         // generate a random color and store it in computer array
         const randomColor = this.colors[Math.floor(Math.random() * 4)]
         this.computer.push(randomColor)
@@ -90,9 +92,7 @@ class Simon {
                 $('#' + randomColor).removeClass(randomColor + "-flash")
             }, 500);
         }, this.speed);
-
     }
-
     // this function's control flow verify the equality of playerSequence with gameSequence, if it is equal we fire nextSequence for another round
     checkClick(round) {
         // compare players array with computer's array, if the match 
@@ -110,7 +110,7 @@ class Simon {
         $('.score').text(`score: ${this.computer.length} `)
         setTimeout(() => {
             this.reset()
-        }, 1000);
+        }, 2000);
     }
     // this function will resets game values
     reset() {

@@ -10,7 +10,7 @@
   }
 
   .game {
-    margin-top: 10%;
+    margin-top: 5%;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -208,7 +208,6 @@ Media Query for small screens */
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    padding: 40%;
   }
 
   .row {
@@ -311,7 +310,12 @@ Media Query for small screens */
     height: 150px;
     width: 150px;
     border: 10px solid rgb(31, 29, 29);
-    background-color: grey;
+    background: rgb(120, 123, 136);
+    background: radial-gradient(
+      circle,
+      rgba(120, 123, 136, 1) 0%,
+      rgba(74, 43, 50, 1) 100%
+    );
     border-radius: 50%;
     position: absolute;
     display: flex;
