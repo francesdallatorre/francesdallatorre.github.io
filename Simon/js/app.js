@@ -68,17 +68,26 @@ class Simon {
     }
     roundManager() {
         this.player = []
-        if (this.level === 7) {
+        if (this.level === 10) {
             $('.count').text(this.level)
+            this.speed = 1000
             this.announceWinner()
         } else {
             this.nextSequence()
         }
 
     }
-    // this function generates a random color prompt, everytime it  is invoked it will increase the level by one, and it also stores the value of the random color prompt in a variable gameSequence
+    // this function generates a random color prompt, everytime it  is invoked it will increase the level by one,
+    // it also stores the value of the random color prompt in a variable gameSequence, and increases the speed as levels go up.
     nextSequence() {
         this.level++;
+
+        if (this.level > 2) {
+            this.speed = 1000
+        } else if (this.level > 5) {
+            this.speed = 500
+        }
+
         setTimeout(() => {
             $('.count').text(this.level)
         }, 1000);
