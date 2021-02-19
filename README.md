@@ -1,2 +1,3 @@
 # Projects
-### Simon Game
+### [Simon Game] (https://francesdallatorre.github.io/Simon/)
+
