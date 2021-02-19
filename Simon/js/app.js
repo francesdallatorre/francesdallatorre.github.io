@@ -12,8 +12,6 @@ class Simon {
         this.yellowAudio = new Audio('https://dl.dropboxusercontent.com/s/0ml89c51jtlpfva/f_note1.wav');
         this.blueAudio = new Audio('https://dl.dropboxusercontent.com/s/fm5d186yliwwm5w/g_note1.wav')
         this.wrongAudio = new Audio('https://dl.dropboxusercontent.com/s/r37z5gz4atss8aa/family_fortunes__wrong_answer.mp3')
-
-
         // this block of code is actively listening for click events, and will take the user's input and save it into playerSequence variable, then call the function checkClick to compare players input with computer's input.
         $('.btn').on('click', (event) => {
             if (this.initiate) {
@@ -31,8 +29,6 @@ class Simon {
                 alert('press on to play')
             }
         })
-
-
     }
     // this function initiates the game by clicking the on button
     init() {
@@ -87,7 +83,6 @@ class Simon {
         } else if (this.level > 5) {
             this.speed = 500
         }
-
         setTimeout(() => {
             $('.count').text(this.level)
         }, 1000);
