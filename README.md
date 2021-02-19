@@ -1,3 +1,3 @@
-# personal projects
-### [Simon Game](https://francesdallatorre.github.io/Simon/)
+# Projects
+#### [Simon Game](https://francesdallatorre.github.io/Simon/)
 
